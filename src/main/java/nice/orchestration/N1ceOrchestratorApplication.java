@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @EnableAutoConfiguration
 //@ComponentScan(basePackages = "nice.orchestration")
-@ComponentScan(basePackages = {"nice.orchestration.config", "nice.orchestration.controller"})
+@ComponentScan(basePackages = {"nice.orchestration.config", "nice.orchestration.controller","nice.orchestration.processor"})
 public class N1ceOrchestratorApplication {
 	
 	public static void main(String[] args) {

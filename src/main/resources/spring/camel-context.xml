@@ -7,9 +7,14 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        ">
 
-    <camelContext id="camel-context-n1ceorch" xmlns="http://camel.apache.org/schema/spring" trace="true">
+    <bean autowire="byName" id="dummyLookProcessor"/>
 
+    <camelContext id="camel-context-n1ceorch" xmlns="http://camel.apache.org/schema/spring" trace="true">
+        <packageScan>
+            <package>nice.orchestration.processor</package>
+        </packageScan>
 <!--        <propertyPlaceholder id="properties" location="n1ceorch.properties" />-->
+
 
     </camelContext>
 
