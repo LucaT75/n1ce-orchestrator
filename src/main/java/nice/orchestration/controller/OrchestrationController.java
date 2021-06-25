@@ -1,5 +1,6 @@
 package nice.orchestration.controller;
 
+import org.apache.camel.Produce;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,6 @@ public class OrchestrationController {
 	
 //	@Autowired
 //	private CamelService camelService;
-	
 	
 	@GetMapping("/version")
 	public ResponseEntity<RestResponse<String>> getVersion() {
