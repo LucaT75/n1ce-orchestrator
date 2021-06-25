@@ -1,6 +1,7 @@
 package nice.orchestration.controller;
 
 import org.apache.camel.Produce;
+import org.apache.camel.ProducerTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nice.orchestration.model.RestResponse;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/orchestration")
 public class OrchestrationController {
@@ -19,12 +22,16 @@ public class OrchestrationController {
 	
 //	@Autowired
 //	private CamelService camelService;
+	@Produce
+	private ProducerTemplate producerTemplate;
+
 	
 	@GetMapping("/version")
 	public ResponseEntity<RestResponse<String>> getVersion() {
 		final long start = System.nanoTime();
 		log.info("getVersion - Start");
-		
+		Map<String, Object> headers = null;
+		producerTemplate.sendBodyAndHeaders("direct:tracciaDati", "getVersion", headers);
 		
 		RestResponse<String> response = new RestResponse<>();
 		//GenericResponse data = this.camelService.resetPosizioneRilancio(request);
